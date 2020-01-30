@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<head>
+    <title>My Second Ever Web Page</title>
+    <link rel="stylesheet" type="text/css" href="index.css"> 
+</head>
+
+<body>
+    <a href="students.html">    Students</a>    
+    <a href="instructors.html"> Instructors</a>
+    <a href="login.html">       Log Out</a>
+
+    <h1 id="homeTitle">HOME</h1>
+
+    <img id="myPic" src="wife.jpg">
+
+ 
+    <!-- Paragraph 1 -->
+    <h2>About my Home Page</h2>
+    <p>
+        For the home page, I decided to use a photo of my wife 
+        from a romantic dinner. I particularly like this photo of her. The video 
+        below is of a pjoject I was working on for a previous class. I was plying
+        with the float parameters to get an idea of how to anchor the images to the
+        page when the page display. 
+    </p>
+
+
+    <!-- Used w3school for the below --> 
+    <video onclick="playPause()" id="myVid" autoplay>
+        <source  src="work.mp4" type="video/mp4">
+    </video>
+
+    <br>
+        <script>
+            var myvideo = document.getElementById("myVid");
+            function playPause(){
+                if(myvideo.paused)
+                    myvideo.play();
+                else
+                    myvideo.pause();
+            }
+        </script>
+    <br>
+    
+    <!-- Paragraph 2 -->
+    <h2>About the Additional Pages</h2>
+    <p>        
+        The Instuctors html is a simple page with the OIT Hootie inset as the background. The Student page simply lists student IDs and emails in a tabular format. 
+        It uses the same backround image as the Instructors page. 
+    </p>
+
+    <!-- Paragraph 3 -->
+    <h2> Additional Elements </h2>
+    <p>
+        The image and video links in the page are current centered, I tried the stagger them 
+        (float:right for the image and float:left for the video);  however,
+        the image alignments also seemed to adversaly affect the sizes of the 
+        video and it began overlapping the other text. I removed the separate button suggested
+         by the w3schools.com tutorial and went with a clickable video instead. 
+    </p>
+</body>

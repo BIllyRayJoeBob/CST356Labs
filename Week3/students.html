@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Students</title>
+    <link rel="stylesheet" type="text/css" href="index.css"> 
+    <script src="js/student.js"></script>
+</head>
+
+<body class="tablePageBackground">
+
+    <a href="instructors.html"> Instructors</a> 
+    <a href="index.html">       Home</a>       
+    <a href="login.html">       Log Out</a>
+
+    <h1>Students</h2>
+    <table>
+        <thead>
+            <th class="tableHeading">Student ID</th>
+            <th class="tableHeading">Email Address</th>
+        </thead>
+
+        <tbody id="student-list">
+            <script>initializeStudentTable()</script>
+        </tbody>
+    </table>
+
+
+</body>
