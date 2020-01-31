@@ -1,5 +1,6 @@
-function validate() {
-    
+function validate() {    
+    var boolean = true;
+
     document.getElementById('user-name-error').style.visibility = 'hidden'
     document.getElementById('Password-error').style.visibility = 'hidden'
 
@@ -8,9 +9,13 @@ function validate() {
 
     if (firstName == '') {
         document.getElementById('user-name-error').style.visibility = 'visible'
+        boolean = false;
     }
 
     if (lastName == '') {
         document.getElementById('Password-error').style.visibility = 'visible'
+        boolean = false;
     }
+
+    return boolean;
 }
