@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <title> Steven's Login page </title> <!--Tab Title-->
+    <link rel="stylesheet" type="text/css" href="css/index.css"> 
+    <script src="js/login.js"></script>
+</head>
+
+<body style="background-image: url('../images/OIT.jpg');" >
+    <h1 style="color: aliceblue;" >
+        LOGIN:
+    </h1>
+
+    <form name="login-form" action="index.html" style="color: aliceblue;" > 
+        <div style="font-family: monospace;" >
+            <label>UserName:</label>
+            <input type="text" name="UserName" id="UserName"><br>
+            
+            <div id="user-name-error" style="visibility: hidden;">
+                Please enter a User Name
+            </div> 
+                        <br>
+            
+            <label>Password:</label>
+            <input type="password" name="Password" id="Password"><br>
+            
+            <div id="Password-error" style="visibility: hidden;">
+                Please enter a Password
+            </div> 
+                        <br>
+            
+            <button  onclick="return validate()" id="submit">Login</button>
+        </div>
+    </form>
+  
+
+    
+
+    
+</body>
