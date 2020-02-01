@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-
 <head>
     <title>Students</title>
+    <!--removeIf(production)-->
     <link rel="stylesheet" type="text/css" href="css/index.css"> 
     <script src="js/student.js"></script>
+    <!--endRemoveIf(production)-->
+    <!-- inject:css --><!-- endinject -->
+    <!-- inject:js --><!-- endinject -->
 </head>
-
 <body class="generalBackground">
     <a href="index.html">       Home</a>       
     <a href="instructors.html"> Instructors</a> 
     <a href="login.html">       Log Out</a>
-
     <h1>Students</h2>
     <table>
         <thead>
             <th class="tableHeading">Student ID</th>
             <th class="tableHeading">Email Address</th>
         </thead>
-
         <tbody id="student-list">
             <script>initializeStudentTable()</script>
         </tbody>
     </table>
-
-
 </body>

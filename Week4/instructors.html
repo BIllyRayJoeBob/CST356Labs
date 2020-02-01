@@ -1,30 +1,26 @@
 <!DOCTYPE html>
-
 <head>
     <title>Instructors</title>
+    <!--removeIf(production)-->
     <link rel="stylesheet" type="text/css" href="css/index.css"> 
     <script src="js/instructors.js"></script>
+    <!--endRemoveIf(production)-->
+    <!-- inject:css --><!-- endinject -->
+    <!-- inject:js --><!-- endinject -->
 </head>
-
 <body class="generalBackground">    
     <a href="students.html">Students</a>
     <a href="index.html">Home</a>
     <a href="login.html">Log Out</a>
-
     <h1>Instuctors</h1>
-
     <table>
-
         <thead>
             <th class="tableHeading">First Name</th class="tableHeading">
             <th class="tableHeading">Middle Name</th class="tableHeading">
             <th class="tableHeading">Last Name</th class="tableHeading">
         </thead>
-
         <tbody id="teacher-list">
             <script>initializeIntructorTable()</script>
         </tbody>
-
     </table>
-
 </body>
