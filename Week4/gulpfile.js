@@ -10,7 +10,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var watch = require('gulp-watch');
 
 function html() {
-  return src(['src/*.html'])
+  return src(['*.html'])
       .pipe(inject(src(['./build/js/*.js', './build/**/*.css'], { read: false }),
         {ignorePath: 'build', addRootSlash: false }))
       .pipe(removeCode({ production: true }))
@@ -18,7 +18,7 @@ function html() {
 }
 
 function js() {
-  return src('src/js/*.js', { sourcemaps: true })
+  return src('js/*.js', { sourcemaps: true })
     .pipe(sourcemaps.init())
     .pipe(concat('app.min.js'))
     .pipe(uglify())
@@ -27,7 +27,7 @@ function js() {
 }
 
 function css() {
-  return src('src/css/*.css')
+  return src('css/*.css')
     .pipe(sourcemaps.init())
     .pipe(concat('app.min.css'))
     .pipe(minifyCSS())
@@ -36,14 +36,14 @@ function css() {
 }
 
 function images() {
-  return src('src/images/*.png')
+  return src('images/*.png')
     .pipe(dest('build/images'))
 }
 
 function watch_files() {
-  watch('src/*.html', html);
-  watch('src/js/*.js', js);
-  watch('src/css/*.css', css);
+  watch('*.html', html);
+  watch('js/*.js', js);
+  watch('css/*.css', css);
 }
 
 exports.default = series(js, css, images, html, watch_files);
