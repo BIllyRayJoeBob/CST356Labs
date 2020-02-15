@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/components/Home';
-import Forms from '@/components/Forms';
-import Tables from '@/components/Tables';
+import Students from '@/components/Students';
+import Instructors from '@/components/Instructors';
 
 Vue.use(Router)
 
@@ -18,11 +18,11 @@ export default new Router({
     },
     {
       path: '/students',
-      component: Forms
+      component: Students
     },
     {
       path: '/instructors',
-      component: Tables
+      component: Instructors
     }
   ]
 })

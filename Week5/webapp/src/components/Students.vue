@@ -1,13 +1,12 @@
 <template>
   <div>
-    <h1>Students</h2>
+    <h1>Students</h1>
     <table>
         <thead>
             <th class="tableHeading">Student ID</th>
             <th class="tableHeading">Email Address</th>
         </thead>
         <tbody id="student-list">
-            <script>initializeStudentTable()</script>
         </tbody>
     </table>
   </div>
