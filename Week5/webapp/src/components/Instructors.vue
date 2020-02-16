@@ -7,7 +7,12 @@
             <th class="tableHeading">Middle Name</th>
             <th class="tableHeading">Last Name</th >
         </thead>
-        <tbody id="teacher-list">
+        <tbody id="teacher-list">           
+            <tr v-for="instructor in instructors" v-bind:key="instructor">
+                <td>{{ instructor.FirstName }}</td>
+                <td>{{ instructor.MiddleName }}</td>
+                <td>{{ instructor.LastName }}</td>
+            </tr>
         </tbody>
     </table>
   </div>
@@ -16,38 +21,15 @@
 <script>
     export default { 
         name: 'Intructors',
+        mounted() {this.instructors = getinstructors();},
+        data(){ return{instructors:[]} }
+    }
+    function getinstructors() {
+            return JSON.parse(instructors);
         }
-    var instructors = '{"Instructors":[{"FirstName":"Billy Ray","MiddleName":"Joe", "LastName":"Bob"},{"FirstName":"Phong","MiddleName":"", "LastName":"Nguyen"},{"FirstName":"Lucas","MiddleName":"", "LastName":"Cordova"},{"FirstName":"Gerald","MiddleName":"", "LastName":"Aden"},{"FirstName":"Pramod","MiddleName":"", "LastName":"Govindan"}]}'
-    function getTeachers(instructors)
-    {
-        return JSON.parse(instructors);
-    }
-    function displayInstructors(JSONIntructors)
-    {
-        //Accessing the inner JSON "Students" field
-        JSONIntructors = JSONIntructors.Instructors;
+    var instructors = '[{"FirstName":"Billy Ray","MiddleName":"Joe", "LastName":"Bob"},{"FirstName":"Phong","MiddleName":"", "LastName":"Nguyen"},{"FirstName":"Lucas","MiddleName":"", "LastName":"Cordova"},{"FirstName":"Gerald","MiddleName":"", "LastName":"Aden"},{"FirstName":"Pramod","MiddleName":"", "LastName":"Govindan"}]'
 
-        // Build and HTML string from the JSON file
-        var teacherTable = "";
-        var i;
-        for(i=0; i< JSONIntructors.length; ++i)
-        {
-            var first = JSONIntructors[i].FirstName;
-            var middle = JSONIntructors[i].MiddleName;
-            var last = JSONIntructors[i].LastName;
-
-            teacherTable += "<tr><th>"+first+"</th><th>"+middle+"</th><th>"+last+"</th>";
-        }
-        //Take the completed string and insert it into the HTML by overwriting the HTML id.
-        document.getElementById("teacher-list").innerHTML = teacherTable;
-    }
-    //call this in the HTML
-    function initializeIntructorTable(){
-        displayInstructors(getTeachers(instructors));
-    }
-    initializeIntructorTable();
-
-    </script>
+</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
@@ -112,7 +94,7 @@ h2{
     text-decoration: midnightblue;
 }
 
-table, tbody, tr, th {
+table, tbody, tr, th, .teacher-list {
     border: 3px solid darkgreen;
     text-align: center;
     border-collapse: collapse;

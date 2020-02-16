@@ -1,8 +1,9 @@
 <template>
     <div class="links">
         <span v-on:click='goToHome'>Home</span>
-        <span v-on:click='goToTables'>Table Example</span>
-        <span v-on:click='goToForms'>Form Example</span>
+        <span v-on:click='goToStudents'>Students</span>
+        <span v-on:click='goToInstructors'>Instructors</span>
+        <!--<span v-on:click='goToLogin'>LogOut</span>-->
     </div>
 </template>
 
@@ -10,13 +11,16 @@
   export default {
     name: 'NavBar',
     methods: {
+      // goToLogin: function(){
+      //   this.$router.push({ path: 'login'})
+      // },
       goToHome: function() {
         this.$router.push({ path: 'home' })
       },
-      goToTables: function() {
+      goToStudents: function() {
         this.$router.push({ path: 'students' })
       },
-      goToForms: function() {
+      goToInstructors: function() {
         this.$router.push({ path: 'instructors' })
       }
     }

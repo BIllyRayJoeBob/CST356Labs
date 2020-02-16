@@ -7,12 +7,12 @@
     <p>
         For the home page, I decided to use a photo of my wife 
         from a romantic dinner. I particularly like this photo of her. The video 
-        below is of a pjoject I was working on for a previous class. I was plying
+        below is of a project I was working on for a previous class. I was playing
         with the float parameters to get an idea of how to anchor the images to the
         page when the page display. 
     </p>
-    <video onclick="playPause()" id="myVid" autoplay>
-        <source  src="images/work.mp4" type="video/mp4">
+    <video v-on:click='PlayPause' id="myVid" autoplay>
+        <source src="../assets/work.mp4" type="video/mp4">
     </video>
     <br>
     <br>
@@ -35,7 +35,16 @@
 <script>
 export default {
   name: 'Home',
+  methods: { 
+    PlayPause: function playPause(){
+      if(myvideo.paused)
+        myvideo.play();
+      else
+        myvideo.pause();
+      }
+  }
 }
+var myvideo = document.getElementById("myVid");
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
