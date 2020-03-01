@@ -4,13 +4,10 @@ namespace Database
 {
     public class SchoolContext : DbContext
     {
-        public SchoolContext(DbContextOptions<SchoolContext> options) :base(options)
-        {
-
+        public SchoolContext(DbContextOptions<SchoolContext> options) : base(options)         
+        {         
         }
-
-        public DbSet<Student> Student {get; set;}
-        public DbSet<Instructor> Instructor {get; set;}
+        
+        public DbSet<Student> Student { get; set; }
     }
-
 }
