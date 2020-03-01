@@ -1,32 +1,136 @@
 <template>
   <div>
-    <h1>Students</h1>
-    <table>
+    <h1 class="Title">Students</h1>
+
+    <div v-if='operation == "list"'>
+      <table>
         <thead>
+          <tr>
             <th class="tableHeading">Student ID</th>
             <th class="tableHeading">Email Address</th>
+          </tr>
         </thead>
         <tbody id="student-list">            
-            <tr v-for="student in students" v-bind:key="student">
-                <td>{{ student.ID }}</td>
-                <td>{{ student.email }}</td>
-            </tr>
+          <tr v-for="student in students" v-bind:key="student">
+            <td>{{ student.studentId }}</td>
+            <td>{{ student.emailAddress }}</td>
+          </tr>
         </tbody>
-    </table>
+      </table>
+    </div>
+    
   </div>
 </template>
 
 <script>
+    import Vue from 'vue';
+
     export default {
-        name: 'Students',
-        mounted() {this.students = getStudents();},
-        data(){ return{students:[]} }
-    }
-    function getStudents() {
-            return JSON.parse(students);
+        studentId: 'Students',        
+        
+        data () {
+            return {
+                students: [],
+                operation: 'list',
+                studentId: undefined,
+                emailAddress: undefined,
+                studentUpdateId: undefined,
+                apiServer: process.env.VUE_APP_API_SERVER
+            }
+        },
+
+        methods: {
+            getStudents: function() {
+                let url = `http://${this.apiServer}/api/student`;
+                Vue.axios.get(url).then(
+                    (response) => {
+                        this.students = response.data;
+                    },
+                    (error) => {
+                        console.log(error)
+                    }
+                );
+            },
+            getStudent: function(studentId) {
+                let url = `http://${this.apiServer}/api/student/${studentId}`;
+                Vue.axios.get(url).then(
+                    (response) => {
+                        this.studentId = response.data.studentId;
+                        this.emailAddress = response.data.emailAddress;
+                    },
+                    (error) => {
+                        console.log(error)
+                    }
+                );
+            },
+            displayAddStudent: function() {
+                this.studentId = undefined;
+                this.emailAddress = undefined;
+                this.operation = 'add';
+            },
+            addStudent: function() {
+                let url = `http://${this.apiServer}/api/student`;
+                Vue.axios.post(url, {
+                    studentId: this.studentId,
+                    emailAddress: parseInt(this.emailAddress)
+                }).then(
+                    () => {
+                        this.getStudents();
+                        this.operation = 'list';
+                    },
+                    (error) => {
+                        console.log(error)
+                    }
+                );
+            },
+            displayStudentDetails: function(studentId) {
+                this.getStudent(studentId);
+                this.operation = 'detail';
+            },
+            displayUpdateStudent: function(studentId) {
+                this.studentUpdateId = studentId;
+                this.getStudent(studentId);
+                this.operation = 'update';
+            },
+            updateStudent: function() {
+                let url = `http://${this.apiServer}/api/student/${this.studentUpdateId}`;
+                Vue.axios.put(url, {
+                    studentId: this.studentId,
+                    emailAddress: parseInt(this.emailAddress)
+                }).then(
+                    () => {
+                        this.getStudents();
+                        this.operation = 'list';
+                    },
+                    (error) => {
+                        console.log(error)
+                    }
+                );
+            },
+            deleteStudent: function(studentId) {
+                let url = `http://${this.apiServer}/api/student/${studentId}`;
+                Vue.axios.delete(url).then(
+                    () => {
+                        this.getStudents();
+                        this.operation = 'list';
+                    },
+                    (error) => {
+                        console.log(error)
+                    }
+                );
+            },
+            cancel: function() {
+                this.operation = 'list';
+            }
+        },
+
+
+        mounted() {
+            this.getStudents();
+            this.operation = 'list';
         }
-    var students = '[{"ID":"918000001","email":"billyray.bob@school.edu"},{"ID":"918000002","email":"phong.nguyen@school.edu"},{"ID":"918000003","email":"lucas.cordova@school.edu"},{"ID":"918000004","email":"gerald.aden@school.edu"},{"ID":"918000005","email":"pramod.govindan@school.edu"}]'
-</script>
+    }  
+ </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

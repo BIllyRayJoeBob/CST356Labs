@@ -1,7 +1,7 @@
 <template>
   <div>
     
-    <h1 id="homeTitle">HOME</h1>
+    <h1 class="Title">HOME</h1>
     <img id="myPic" src="../assets/wife.jpg">
     <h2>About my Home Page</h2>
     <p>
@@ -74,7 +74,7 @@ a{
     border: ridge;
 }
 
-#homeTitle {
+.Title {
     color: darkmagenta;
     font-family: cursive;
 }

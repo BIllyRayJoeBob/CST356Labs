@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Instuctors</h1>
+    <h1 class="Title" >Instuctors</h1>
     <table>
         <thead>
             <th class="tableHeading">First Name</th>
