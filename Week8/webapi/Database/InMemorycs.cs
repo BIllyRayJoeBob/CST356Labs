@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace Database
 {
     public static class InMemory
-    {
+    {         
         public static List<Instructor> Instructors = new List<Instructor> {
             new Instructor {
                 Id = 1,

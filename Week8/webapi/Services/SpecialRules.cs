@@ -1,5 +1,5 @@
-public class SudentRules
+public static class StudentRules
 {
-    public static bool isSpecialStudent(Student student) => 
-        student.StudentId < 918000214;
+    public static bool isSpecial(Student student) => 
+        student.StudentId < 918000004;
 }

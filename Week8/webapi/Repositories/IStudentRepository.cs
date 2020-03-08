@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class IStudentRepository
+public interface IStudentRepository
 {
     List<Student> getAllStudents();    
 }
