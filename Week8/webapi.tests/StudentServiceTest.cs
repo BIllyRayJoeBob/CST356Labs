@@ -10,8 +10,6 @@ public class StudentServiceTests
     private StudentService _studentService; // System Under Test (SUT)
     private IStudentRepository _studentRepository; // Mock
 
-    private readonly StudentRules _specialRules;
-
     [SetUp]
     public void Setup()
     {
@@ -79,9 +77,9 @@ public class StudentServiceTests
         // Act (when)?
         var studentViewModels = _studentService.getAllStudents();
         // Assert (NUnit Assertions)(Then)?
-        Assert.That(studentViewModels.Any(student => _specialRules.isSpecial), Is.EqualTo(false));
+        Assert.That(studentViewModels.Any(student => SpecialRules.isSpecial(student)), Is.EqualTo(false));
         // Assert (FluentAssertions)(Then)?
-        studentViewModels.Any(student => _specialRules.isSpecial).Should().BeFalse();
+        studentViewModels.Any(student => SpecialRules.isSpecial(student)).Should().BeFalse();
     }
 
     [Test]
@@ -92,7 +90,7 @@ public class StudentServiceTests
         // Act (when)?
         var studentViewModels = _studentService.getAllStudents();
         // Assert (FluentAssertions)(Then)?
-        studentViewModels.Count(student => _specialRules.isSpecial).Should().Be(3);
+        studentViewModels.Count(student => SpecialRules.isSpecial(student)).Should().Be(3);
     }
 
     [Test]
@@ -101,6 +99,6 @@ public class StudentServiceTests
         // Arrange (Given)?
         A.CallTo(() => _studentRepository.getAllStudents()).Returns(NormalTestStudents);
         // Assert (FluentAssertions)(Then)?
-        studentViewModels.Count(student => _specialRules.isSpecial).Should().Be(2);
+        studentViewModels.Count(student => SpecialRules.isSpecial(student)).Should().Be(2);
     }
 }
