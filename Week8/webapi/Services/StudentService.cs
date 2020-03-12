@@ -15,7 +15,7 @@ public class StudentService : IStudentService
                 item: new StudentViewModel {
                     StudentId       = student.StudentId,
                     EmailAddress    = student.EmailAddress,
-                    Special         = StudentRules.isSpecial(student)
+                    Special         = SpecialRules.isSpecial(student)
                 }
             );
         }            

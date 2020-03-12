@@ -77,9 +77,9 @@ public class StudentServiceTests
         // Act (when)?
         var studentViewModels = _studentService.getAllStudents();
         // Assert (NUnit Assertions)(Then)?
-        Assert.That(studentViewModels.Any(student => SpecialRules.isSpecial(student)), Is.EqualTo(false));
+        Assert.That(studentViewModels.Any(student => student.Special), Is.EqualTo(false));
         // Assert (FluentAssertions)(Then)?
-        studentViewModels.Any(student => SpecialRules.isSpecial(student)).Should().BeFalse();
+        studentViewModels.Any(student => student.Special).Should().BeFalse();
     }
 
     [Test]
@@ -90,15 +90,18 @@ public class StudentServiceTests
         // Act (when)?
         var studentViewModels = _studentService.getAllStudents();
         // Assert (FluentAssertions)(Then)?
-        studentViewModels.Count(student => SpecialRules.isSpecial(student)).Should().Be(3);
+        studentViewModels.Count(student => student.Special).Should().Be(3);
     }
 
     [Test]
     public void ShouldReturnAllStudents()
     {
         // Arrange (Given)?
-        A.CallTo(() => _studentRepository.getAllStudents()).Returns(NormalTestStudents);
+        A.CallTo(() => _studentRepository.getAllStudents()).Returns(AllTestStudents);
+        // Act (when)?
+        var studentViewModels = _studentService.getAllStudents();
         // Assert (FluentAssertions)(Then)?
-        studentViewModels.Count(student => SpecialRules.isSpecial(student)).Should().Be(2);
+        studentViewModels.Count(student => student.Special).Should().Be(3);        
+        studentViewModels.Count(student => !student.Special).Should().Be(2);
     }
 }
