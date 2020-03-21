@@ -1,5 +1,4 @@
-<template>
-  <div>
+<template><div>
     
     <h1 id="homeTitle">HOME</h1>
     <img id="myPic" src="../assets/wife.jpg">
@@ -29,8 +28,18 @@
         video and it began overlapping the other text. I removed the separate button suggested
          by the w3schools.com tutorial and went with a clickable video instead. 
     </p>
-  </div>
-</template>
+    
+    <div class="home">
+            <!-- Check that the SDK client is not currently loading before accessing is methods -->
+        <div v-if="!$auth.loading">
+        <!-- show login when not authenticated -->
+        <button v-if="!$auth.isAuthenticated" @click="login">Log in</button>
+        <!-- show logout when authenticated -->
+        <button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
+        </div>
+    </div>
+
+</div></template>
 
 <script>
 export default {
@@ -45,6 +54,26 @@ export default {
   }
 }
 var myvideo = document.getElementById("myVid");
+
+
+export default {
+  name: "home",
+  components: {
+    HelloWorld
+  },
+  methods: {
+    // Log the user in
+    login() {
+      this.$auth.loginWithRedirect();
+    },
+    // Log the user out
+    logout() {
+      this.$auth.logout({
+        returnTo: window.location.origin
+      });
+    }
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

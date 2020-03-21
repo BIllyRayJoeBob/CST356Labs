@@ -18,7 +18,7 @@
                 Please enter a Password
             </div> 
             <br>            
-            <button  onclick="return login()" id="submit">Login</button>
+            <button  onclick="return validate()" id="submit">Login</button>
         </div>
     </form>    
   </div>

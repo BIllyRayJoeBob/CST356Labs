@@ -9,9 +9,9 @@
     "build-docker": "vue-cli-service build --mode docker"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.6.5",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
-    "jshint": "^2.11.0",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
     "vue-router": "^3.1.5"
